@@ -16,8 +16,11 @@ const board = (function () {
             square.innerHTML = "";
             square.classList.remove("occupied");
         }
+        
+        console.log("resetting")
         if(control.checkPlay()){control.resetMovesTwo();}
         else{control.resetMoves();}
+
         p1wins = player1.getWins();
         p2wins = player2.getWins();
         
@@ -81,23 +84,13 @@ const player2 = (function () {
 const control = (function (board) {
 
     let move_count = 0
-    let first = true
+    var first = true
 
-    const resetMoves = () => move_count = 0;
+    const resetMoves = () => {move_count = 0; first = true; console.log("resetmoves")}
 
-    const resetMovesTwo = () => move_count = 1;
+    const resetMovesTwo = () => {move_count = 1; first = false; console.log("resetmovestwo")}
 
-    const checkPlay = () => {
-        console.log("checkplay")
-        if (first == false){
-            first = true;
-            return false
-        }
-        else {
-            first = false;
-            return true
-        }
-    }
+    const checkPlay = () => {console.log("checkplay"); return first}
 
     const makeMove = (X, Y) => {
         if (move_count % 2 == 0){
