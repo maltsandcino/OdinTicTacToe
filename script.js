@@ -5,6 +5,8 @@ const board = (function () {
     let arr = [["", "", ""], ["", "", ""], ["", "", ""]];
 
     const restart = () => { for (let i = 0; i < arr.length; i++) { 
+
+        
         for (let j = 0; j < arr[i].length; j++) { 
             arr[i][j] = ""; }
         }
@@ -14,7 +16,8 @@ const board = (function () {
             square.innerHTML = "";
             square.classList.remove("occupied");
         }
-        control.resetMoves();
+        if(control.checkPlay()){control.resetMovesTwo();}
+        else{control.resetMoves();}
         p1wins = player1.getWins();
         p2wins = player2.getWins();
         
@@ -34,7 +37,6 @@ const board = (function () {
             win2div.classList.add("winning")
         }
     }
-
 
     const hardRestart = () => {
 
@@ -79,8 +81,23 @@ const player2 = (function () {
 const control = (function (board) {
 
     let move_count = 0
+    let first = true
 
     const resetMoves = () => move_count = 0;
+
+    const resetMovesTwo = () => move_count = 1;
+
+    const checkPlay = () => {
+        console.log("checkplay")
+        if (first == false){
+            first = true;
+            return false
+        }
+        else {
+            first = false;
+            return true
+        }
+    }
 
     const makeMove = (X, Y) => {
         if (move_count % 2 == 0){
@@ -103,7 +120,11 @@ const control = (function (board) {
                 alert(`${player.name} has won!`);
                 board.restart();
             }
-            else if (move_count == 9){
+            else if (move_count == 9 && control.checkPlay()){
+                alert("The game is over and no player has won.")
+                board.restart();
+            }
+            else if (move_count == 10 && !control.checkPlay()){
                 alert("The game is over and no player has won.")
                 board.restart();
             }
@@ -124,7 +145,7 @@ const control = (function (board) {
     else if ( board.arr[1][1] !== "" && ((board.arr[1][1] === board.arr[0][1] && board.arr[1][1] === board.arr[2][1]) || (board.arr[1][1] === board.arr[1][0] && board.arr[1][1] === board.arr[1][2]) || (board.arr[1][1] === board.arr[0][0] && board.arr[1][1] === board.arr[2][2]) || (board.arr[1][1] === board.arr[0][2] && board.arr[1][1] === board.arr[2][0])) ) { return board.arr[1][1]; } 
     else { return false; }}
 
-    return {move_count, makeMove, checkWins, resetMoves}
+    return {move_count, makeMove, checkWins, resetMoves, checkPlay, resetMovesTwo}
 
 })(board);
 
