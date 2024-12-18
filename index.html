@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+
+</head>
+<body>
+
+    <div class="layout-grid">
+        <h1 class="title">Tic Tac Toe</h1>
+        <div class="info">
+            <span class="space"></span>
+            <span class="player" id="player1name">Player 1</span>
+            <span class="wins">Wins:</span>
+            <span class="num" id="player1score">0</span>
+            <span class="space"></span>
+            <span class="player" id="player2name">Player 2</span>
+            <span class="wins">Wins:</span>
+            <span class="num" id="player2score">0</span>
+            <span class="space"></span>
+            <button id="reset">Reset Game</button>
+            <button id="resetAll">Reset Scores</button>
+        </div>
+        <div class="gameboardholder not-visible" id="gameDiv">
+            <div class="gameboard">
+                <div class="square" id="00"></div>
+                <div class="square" id="01"></div>
+                <div class="square" id="02"></div>
+                <div class="square" id="10"></div>
+                <div class="square" id="11"></div>
+                <div class="square" id="12"></div>
+                <div class="square" id="20"></div>
+                <div class="square" id="21"></div>
+                <div class="square" id="22"></div>
+            </div>
+        </div>
+        <div class="nameInput gameboardholder" id="startingDiv">
+            <h2 class="inputTitle">Please enter user names to begin</h2>
+            <label for="user1" class="p1label">Player One:</label>
+            <input type="text" name="user1" id="user1input" class="p1input" required>
+            <label for="user2" class="p2label">Player Two:</label>
+            <input type="text" name="user2" id="user2input" class="p2input" required>
+            <button class="begin" id="begin">Begin</button><button class="clear" id="clear">Reset</button>
+        </div>
+        
+
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,163 @@
+*{
+    box-sizing: border-box;
+    
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Cascadia Code, Lucida Sans, Courier, ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+    
+}
+
+.square {
+    border: 1px solid black;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    font-size: 15vh;
+}
+
+.layout-grid{
+    display: grid;
+    height: 100VH;
+    width: 100VW;
+    grid-template: 1fr 9fr / 1fr 9fr;
+    grid-template-areas:
+        "info title"
+        "info game"
+}
+
+.player {
+    font-size: 4vh;
+
+}
+
+.wins{
+
+    font-size: 2vh;
+
+}
+
+.num{
+    font-size: 4vh;
+
+}
+
+.winning{
+    color: green;
+}
+
+.winning::after{
+    content: "-"
+}
+
+.winning::before{
+    content: "-"
+}
+
+.title {
+    display: grid;
+    grid-area: title;
+    text-align: center;
+    align-items: center;
+
+}
+
+.info {
+    display: grid;
+    grid-template: 2fr 2fr 1fr 2fr 2fr 2fr 1fr 2fr 2fr 1fr 1fr / 1fr;
+    grid-area: info;
+    text-align: center;
+}
+
+.square {
+    box-sizing: border-box;
+    border-collapse: collapse;
+    /* margin: -1px; */
+}
+
+.square:hover {
+    background-color: lightgray;
+}
+
+.occupied {
+    background-color: gray;
+}
+
+.occupied:hover {
+    background-color: gray;
+}
+
+.gameboardholder {
+    display: grid;
+    grid-area: game;
+    justify-items: center;
+    align-items: center;
+}
+.gameboard {
+    display: grid;
+    
+    grid-template-rows: repeat(3, 25VH);
+    grid-template-columns: repeat(3, 25VH);
+    
+    gap: 1px;
+}
+
+.nameInput{
+    display: grid;
+    gap: 20px;
+    grid-template: 2fr 2fr 2fr 1fr / 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    "inputtitle inputtitle inputtitle inputtitle"
+    "player1 player1input player2 player2input"
+    ". begin clear ."
+}
+
+.begin{
+    justify-self: end;
+    min-width: 200px;
+    grid-area: begin;
+}
+
+.clear{
+    justify-self: start;
+    min-width: 200px;
+    grid-area: clear;
+}
+
+.inputTitle {
+    grid-area: inputtitle;
+}
+
+.p1label {
+    grid-area: player1;
+    justify-self: end;
+}
+.p1input {
+    grid-area: player1input;
+    justify-self: start;
+}
+.p2label {
+    grid-area: player2;
+    justify-self: end;
+}
+.p2input {
+    grid-area: player2input;
+    justify-self: start;
+}
+
+button {
+    border-radius: 10px;
+    border: 1px dotted black;
+    margin-bottom: 10px;
+    font-size: large;
+}
+
+button:hover{
+    background-color: grey;
+}
+
+.not-visible {
+    display: none;
+}
